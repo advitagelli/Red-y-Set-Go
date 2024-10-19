@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Authentication
+{% endblock title %}
+
+{% block content %}
+<h2 class="mt-5">Login</h2>
+        <form method="post" action={% url 'login' %} class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" placeholder="Enter your username" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" placeholder="Enter your password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+{% endblock content%}
