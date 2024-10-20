@@ -11,6 +11,9 @@ class UserCycleData(models.Model):
     age = models.PositiveIntegerField(help_text="Enter your age in years.")
     previous_cycle_start = models.DateField(help_text="The selected date from the calendar.", default=datetime.date.today)
     previous_cycle_end = models.DateField(help_text="The selected date from the calendar.", default=datetime.date.today)
+    predicted_cycle_length = models.PositiveIntegerField(null=True, blank=True)
+    last_cycle_date = models.DateField(null=True, blank=True)
+    predicted_next_cycle_start = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.user.username}'s Cycle Data - Age: {self.age}"
