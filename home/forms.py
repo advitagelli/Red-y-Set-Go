@@ -5,15 +5,23 @@ from .models import UserCycleData
 class UserCycleDataForm(forms.ModelForm):
     class Meta:
         model = UserCycleData
-        fields = ['cramp_level', 'height', 'weight', 'age']
-        
+        fields = [
+            'current_date',
+            'cramp_level',
+            'height',
+            'weight',
+            'age',
+            'previous_cycle_start',
+            'previous_cycle_end'
+        ]
         widgets = {
-            'cramp_level': forms.Select(attrs={'class': 'form-select'}),
-            # 'cycle_start_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            # 'cycle_end_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'height': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter height in cm'}),
-            'weight': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter weight in pounds'}),
-            'age': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter your age'}),
+            'current_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'cramp_level': forms.Select(attrs={'class': 'form-control'}),
+            'height': forms.NumberInput(attrs={'class': 'form-control'}),
+            'weight': forms.NumberInput(attrs={'class': 'form-control'}),
+            'age': forms.NumberInput(attrs={'class': 'form-control'}),
+            'previous_cycle_start': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'previous_cycle_end': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):
