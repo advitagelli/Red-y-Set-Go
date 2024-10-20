@@ -13,6 +13,7 @@ def home(request):
             cycle_data.save() 
             return redirect('/')
     else:
-        form = UserCycleDataForm()
+        previous_response = UserCycleData.objects.filter(user=request.user).last()
+        form = UserCycleDataForm(instance=previous_response)
 
     return render(request, 'home.html', {'form': form})
