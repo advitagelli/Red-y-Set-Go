@@ -9,6 +9,44 @@
       {% endblock %}
     </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
+    <style>
+      body {
+        background-color: #f7f7f7; /* Light neutral background */
+    }
+      .container {
+          background-color: #ffffff; /* White background for the form */
+          border-radius: 8px; /* Rounded corners */
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+          padding: 20px; /* Inner spacing */
+          margin-top: 50px; /* Spacing from the top */
+      }
+      h1 {
+          color: #333; /* Darker text for better readability */
+      }
+      .btn-primary {
+          background-color: #5a5a5a; /* Neutral button color */
+          border-color: #5a5a5a; /* Same color for the border */
+      }
+      .btn-primary:hover {
+          background-color: #4a4a4a; /* Darker on hover */
+          border-color: #4a4a4a;
+      }
+      .welcome-message {
+        font-size: 3rem; /* Large text size */
+        color: #333; /* Dark text color */
+        text-align: center; /* Center align text */
+        margin-bottom: 20px; /* Space below the message */
+    }
+    .welcome-message::after {
+        content: '';
+        display: block;
+        height: 4px; /* Height of the curved element */
+        width: 80%; /* Width of the curved element */
+        background-color: #5a5a5a; /* Color of the curve */
+        border-radius: 50px; /* Curved edges */
+        margin: 10px auto; /* Center the curve */
+    }
+  </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
