@@ -10,126 +10,13 @@
     </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
     <style>
-
+      {% block style %}{% endblock style %}
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     
-    body {
-        display: flex;
-        flex-direction: column; /* Stack children vertically */
-        height: 100vh; /* Full height of the viewport */
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f8f8f8; /* Light gray background */ 
-        {% comment %} background-color: red; /* Light gray background */ {% endcomment %}
-        color: #333; /* Dark text color */
-        justify-content: left;
-    } 
-
-    .navbar {
-        background-color: #D2B48C;
-        color: white;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .up_cont {
-      display: grid;
-      grid-template-columns: 75% 24.5%;
-      width: 95%;
-      height: 90%;
-      background-color: #5A5A5A;
-      padding: 7px;
-      margin: auto;
-    }
-
-    .left {
-      flex: 3; 
-      background-color: #f0f0f0;
-      padding: 10px;
-    }
-
-    .right {
-        flex: 1; /* 25% of the width */
-        display: flex;
-        flex-direction: column;
-    }
-
-    .right > div {
-        flex: 1; /* Each section takes equal height */
-        padding: 10px;
-        width: 100%;
-        height: 33%;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ccc;
-        margin: 5px; /* Space between sections */
-        background-color: #e0e0e0; /* Default background for each section */
-    }
-
-    h1, h2 {
-        margin: 0 0 10px;
-    }
-
-    h2 {
-        color: #d85c8c; /* Light pink for headings */
-    }
-
-    form {
-        background-color: #fef6f6; /* Very light pink/tan background */
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-control {
-        background-color: #e9ecef; /* Light gray for inputs */
-        border: 1px solid #ced4da; /* Light gray border */
-        width: 100%; /* Full width */
-        padding: 10px; /* Padding inside inputs */
-    }
-
-    .btn-primary {
-        background-color: #8a6a5a; /* Brown button color */
-        border: none;
-        color: white; /* White text for buttons */
-        padding: 10px 15px; /* Button padding */
-        cursor: pointer; /* Pointer on hover */
-    }
-
-    .btn-primary:hover {
-        background-color: #735d5a; /* Darker brown on hover */
-    }
-
-    label {
-        font-weight: bold;
-        color: #333; /* Dark text for labels */
-    }
-
-    .welcome-message {
-        font-size: 3rem; /* Large text size */
-        color: #333; /* Dark text color */
-        text-align: center; /* Center align text */
-        margin-bottom: 20px; /* Space below the message */
-    }
-
-    .welcome-message::after {
-        content: '';
-        display: block;
-        height: 4px; /* Height of the curved element */
-        width: 80%; /* Width of the curved element */
-        background-color: #5a5a5a; /* Color of the curve */
-        border-radius: 50px; /* Curved edges */
-        margin: 10px auto; /* Center the curve */
-    }
   </style>
   </head>
   <body>
