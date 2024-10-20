@@ -5,32 +5,48 @@
 
 {% block content %}
 <h3>Please enter the following information to predict your flow.</h3>
-<form method="POST">
+<form method="post" class="bg-light p-4 rounded shadow">
     {% csrf_token %}
+    
     <div class="form-group">
-        {{ form.cramp_level.label }}
-        {{ form.cramp_level }}
+        <label for="{{ form.current_date.id_for_label }}">{{ form.current_date.label }}</label>
+        <input type="date" name="{{ form.current_date.name }}" id="{{ form.current_date.id_for_label }}" class="form-control" value="{{ form.current_date.value|default_if_none:'' }}">
     </div>
+    
     <div class="form-group">
-        {{ form.cycle_start_date.label }}
-        {{ form.cycle_start_date }}
+        <label for="{{ form.cramp_level.id_for_label }}">{{ form.cramp_level.label }}</label>
+        <select name="{{ form.cramp_level.name }}" id="{{ form.cramp_level.id_for_label }}" class="form-control">
+            {% for value, label in form.cramp_level.field.choices %}
+                <option value="{{ value }}"{% if form.cramp_level.value == value %} selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
     </div>
+    
     <div class="form-group">
-        {{ form.cycle_end_date.label }}
-        {{ form.cycle_end_date }}
+        <label for="{{ form.height.id_for_label }}">{{ form.height.label }}</label>
+        <input type="number" name="{{ form.height.name }}" id="{{ form.height.id_for_label }}" class="form-control" value="{{ form.height.value|default_if_none:'' }}">
     </div>
+    
     <div class="form-group">
-        {{ form.height.label }}
-        {{ form.height }}
+        <label for="{{ form.weight.id_for_label }}">{{ form.weight.label }}</label>
+        <input type="number" name="{{ form.weight.name }}" id="{{ form.weight.id_for_label }}" class="form-control" value="{{ form.weight.value|default_if_none:'' }}">
     </div>
+    
     <div class="form-group">
-        {{ form.weight.label }}
-        {{ form.weight }}
+        <label for="{{ form.age.id_for_label }}">{{ form.age.label }}</label>
+        <input type="number" name="{{ form.age.name }}" id="{{ form.age.id_for_label }}" class="form-control" value="{{ form.age.value|default_if_none:'' }}">
     </div>
+    
     <div class="form-group">
-        {{ form.age.label }}
-        {{ form.age }}
+        <label for="{{ form.previous_cycle_start.id_for_label }}">{{ form.previous_cycle_start.label }}</label>
+        <input type="date" name="{{ form.previous_cycle_start.name }}" id="{{ form.previous_cycle_start.id_for_label }}" class="form-control" value="{{ form.previous_cycle_start.value|default_if_none:'' }}">
     </div>
+    
+    <div class="form-group">
+        <label for="{{ form.previous_cycle_end.id_for_label }}">{{ form.previous_cycle_end.label }}</label>
+        <input type="date" name="{{ form.previous_cycle_end.name }}" id="{{ form.previous_cycle_end.id_for_label }}" class="form-control" value="{{ form.previous_cycle_end.value|default_if_none:'' }}">
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endblock content %}
