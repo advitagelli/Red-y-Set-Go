@@ -23,3 +23,5 @@ class UserCycleData(models.Model):
         verbose_name_plural = "User Cycle Data"
 
 
+
+

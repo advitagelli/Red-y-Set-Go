@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block title %}
-    Home
+    Red-y Set Go
 {% endblock title %}
 
 {% block style %}
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
 
 body {
     display: flex;
@@ -17,22 +22,39 @@ body {
     background-color: #f8f8f8; /* Light gray background */ 
     color: #333; /* Dark text color */
     justify-content: left;
+    background-color: #f0f0f0;
 } 
+
 .navbar {
-    background-color: #d7c9b9;
+    background-color: #c1d5f0;
     color: white;
     padding: 10px;
     text-align: center;
 }
 
+.navbar-brand {
+    padding-left: 20px;
+}
+
+.nav-item {
+    padding-left: 1150px;
+}
+
+.container {
+    padding-top: 20px;
+    padding-left: 200px;
+}
+
+
 .up_cont {
   display: grid;
-  grid-template-columns: 75% 24.5%;
+  grid-template-columns: 50% 30%;
   width: 95%;
   height: 90%;
-  background-color: #5A5A5A;
+  background-color: #f0f0f0;
   padding: 7px;
   margin: auto;
+  padding-left: 10px;
 }
 
 .left {
@@ -42,9 +64,13 @@ body {
 }
 
 .right {
-    flex: 1; /* 25% of the width */
+    height: 70%;
+    flex: 1; /* 30% of the width */
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 21%;
 }
 
 .last-cycle-div,
@@ -57,6 +83,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
     
 
     {% comment %} flex: 1; /* Each section takes equal height */ {% endcomment %}
@@ -69,17 +96,17 @@ body {
 }
 
 .last-cycle-div {
-    background-color: #e0d4c4; 
+    background-color: rgba(224, 212, 196, 1);
     color: #4e3d3d; 
 }
 
 .current-cycle-div {
-    background-color: #f1d2d5;
+    background-color: rgba(241, 210, 213, 1);
     color: #4e3d3d;
 }
 
 .exercise-div {
-    background-color: #cbf5dd; 
+    background-color: rgba(221, 242, 209, 1); 
     color: #4e3d3d; 
 }
 
@@ -100,6 +127,11 @@ h1, h2 {
 
 h2 {
     color: #d85c8c; /* Light pink for headings */
+}
+
+h3 {
+    color: white;
+    font-align: 0 auto;
 }
 
 form {
@@ -154,29 +186,532 @@ label {
     margin: 10px auto; /* Center the curve */
 }
 
-
+.calendar {
+    height: 30rem;
+    width: max-content;
+    background-color: white;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 35px 50px 0px 50px;
+  }
+  
+  .calendar {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  
+  .calendar-header {
+    background: #ffb5c0;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+    align-items: center;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 10px;
+  }
+  
+  .calendar-body {
+    padding: 10px;
+  }
+  
+  .calendar-week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(104, 104, 104);
+  }
+  
+  .calendar-week-days div:hover {
+    color: black;
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
+  }
+  
+  .calendar-week-days div {
+    display: grid;
+    place-items: center;
+    color: #ffb5c0;
+    height: 50px;
+  }
+  
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: #0A0921;
+  }
+  
+  .calendar-days div {
+    width: 37px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+  }
+  
+  .month-picker {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .year-picker {
+    display: flex;
+    align-items: center;
+  }
+  
+  .year-change {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0px 10px;
+    cursor: pointer;
+  }
+  
+  .year-change:hover {
+    background-color: #ffb5c0;
+    transition: all .2s ease-in-out;
+    transform: scale(1.12);
+  }
+  
+  .calendar-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  #year:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.2 ease-in-out;
+  }
+  
+  .calendar-days div span {
+    position: absolute;
+  }
+  
+  .calendar-days div:hover {
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+    background-color: #fbc7d4;
+    border-radius: 20%;
+    color: #f8fbff;
+  }
+  
+  .calendar-days div.current-date {
+    color: #f8fbff;
+    background-color: #ffb5c0;
+    border-radius: 20%;
+  }
+  
+  .month-list {
+    position: relative;
+    left: 0;
+    top: -130px;
+    background-color: #ebebeb;
+    color: #151426;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    border-radius: 20px;
+  }
+  
+  .month-list>div {
+    display: grid;
+    place-content: center;
+    margin: 5px 10px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .month-list>div>div {
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .month-list>div>div:hover {
+    background-color: #ffb5c0;
+    color: #f8fbff;
+    transform: scale(0.9);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .month-list.show {
+    visibility: visible;
+    pointer-events: visible;
+    transition: 0.6s ease-in-out;
+    animation: to-left .71s forwards;
+  }
+  
+  .month-list.hideonce {
+    visibility: hidden;
+  }
+  
+  .month-list.hide {
+    animation: to-right 1s forwards;
+    visibility: none;
+    pointer-events: none;
+  }
+  
+  .date-time-formate {
+    height: 4rem;
+    width: 100%;
+    font-family: Dubai Light, Century Gothic;
+    position: relative;
+    display: flex;
+    top: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .day-text-formate {
+    font-family: Microsoft JhengHei UI;
+    font-size: 1.4rem;
+    padding-right: 5%;
+    border-right: 3px solid #ffb5c0;
+  }
+  
+  .date-time-value {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-left: 5%;
+  }
+  
+  .time-formate {
+    font-size: 1.5rem;
+  }
+  
+  .time-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+  }
+  
+  .day-text-formate.hidetime {
+    animation: hidetime 1.5s forwards;
+  }
+  
+  .date-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+  }
+  
+  .day-text-formate.showtime {
+    animation: showtime 1s forwards;
+  }
+  
+  .time-formate.showtime {
+    animation: showtime 1s forwards;
+  }
+  
+  .date-formate.showtime {
+    animation: showtime 1s forwards;
+  }
+  
+  @keyframes to-top {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(100%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes to-left {
+    0% {
+      transform: translatex(230%);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes to-right {
+    10% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translatex(-150%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes showtime {
+    0% {
+      transform: translatex(250%);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translatex(0%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes hidetime {
+    0% {
+      transform: translatex(0%);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translatex(-370%);
+      opacity: 1;
+    }
+  }
 {% endblock style %}
 
 
-{% block content %}
 
+
+{% block content %}
 <div class="left">
     <h1 welcome-message> Welcome, {{user}}</h1>
+    <div class="container">
+        <div class="calendar">
+          <div class="calendar-header">
+            <span class="month-picker" id="month-picker"> May </span>
+            <div class="year-picker" id="year-picker">
+              <span class="year-change" id="pre-year">
+                <pre style="color: white; margin-top: 14px;"><</pre>
+              </span>
+              <span id="year">2020</span>
+              <span class="year-change" id="next-year">
+                <pre style="color: white; margin-top: 14px;">></pre>
+              </span>
+            </div>
+          </div>
+    
+          <div class="calendar-body">
+            <div class="calendar-week-days">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+            <div class="calendar-days">
+            </div>
+          </div>
+          <div class="calendar-footer">
+          </div>
+          <div class="date-time-formate">
+            <div class="day-text-formate">TODAY</div>
+            <div class="date-time-value">
+              <div class="time-formate">01:41:20</div>
+              <div class="date-formate">03 - march - 2022</div>
+            </div>
+          </div>
+          <div class="month-list"></div>
+        </div>
+      </div>
+
+
+      
+
+
+      <script>
+        const isLeapYear = (year) => {
+            return (
+              (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
+              (year % 100 === 0 && year % 400 === 0)
+            );
+          };
+          const getFebDays = (year) => {
+            return isLeapYear(year) ? 29 : 28;
+          };
+          let calendar = document.querySelector('.calendar');
+          const month_names = [
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+              'July',
+              'August',
+              'September',
+              'October',
+              'November',
+              'December',
+            ];
+          let month_picker = document.querySelector('#month-picker');
+          const dayTextFormate = document.querySelector('.day-text-formate');
+          const timeFormate = document.querySelector('.time-formate');
+          const dateFormate = document.querySelector('.date-formate');
+          
+          month_picker.onclick = () => {
+            month_list.classList.remove('hideonce');
+            month_list.classList.remove('hide');
+            month_list.classList.add('show');
+            dayTextFormate.classList.remove('showtime');
+            dayTextFormate.classList.add('hidetime');
+            timeFormate.classList.remove('showtime');
+            timeFormate.classList.add('hideTime');
+            dateFormate.classList.remove('showtime');
+            dateFormate.classList.add('hideTime');
+          };
+          
+          const generateCalendar = (month, year) => {
+            let calendar_days = document.querySelector('.calendar-days');
+            calendar_days.innerHTML = '';
+            let calendar_header_year = document.querySelector('#year');
+            let days_of_month = [
+                31,
+                getFebDays(year),
+                31,
+                30,
+                31,
+                30,
+                31,
+                31,
+                30,
+                31,
+                30,
+                31,
+              ];
+          
+            let currentDate = new Date();
+          
+            month_picker.innerHTML = month_names[month];
+          
+            calendar_header_year.innerHTML = year;
+          
+            let first_day = new Date(year, month);
+          
+          
+            for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+          
+              let day = document.createElement('div');
+          
+              if (i >= first_day.getDay()) {
+                day.innerHTML = i - first_day.getDay() + 1;
+          
+                if (i - first_day.getDay() + 1 === currentDate.getDate() &&
+                  year === currentDate.getFullYear() &&
+                  month === currentDate.getMonth()
+                ) {
+                  day.classList.add('current-date');
+                }
+              }
+              calendar_days.appendChild(day);
+            }
+          };
+          
+          let month_list = calendar.querySelector('.month-list');
+          month_names.forEach((e, index) => {
+            let month = document.createElement('div');
+            month.innerHTML = `<div>${e}</div>`;
+          
+            month_list.append(month);
+            month.onclick = () => {
+              currentMonth.value = index;
+              generateCalendar(currentMonth.value, currentYear.value);
+              month_list.classList.replace('show', 'hide');
+              dayTextFormate.classList.remove('hideTime');
+              dayTextFormate.classList.add('showtime');
+              timeFormate.classList.remove('hideTime');
+              timeFormate.classList.add('showtime');
+              dateFormate.classList.remove('hideTime');
+              dateFormate.classList.add('showtime');
+            };
+          });
+          
+          (function() {
+            month_list.classList.add('hideonce');
+          })();
+          document.querySelector('#pre-year').onclick = () => {
+            --currentYear.value;
+            generateCalendar(currentMonth.value, currentYear.value);
+          };
+          document.querySelector('#next-year').onclick = () => {
+            ++currentYear.value;
+            generateCalendar(currentMonth.value, currentYear.value);
+          };
+          
+          let currentDate = new Date();
+          let currentMonth = { value: currentDate.getMonth() };
+          let currentYear = { value: currentDate.getFullYear() };
+          generateCalendar(currentMonth.value, currentYear.value);
+          
+          const todayShowTime = document.querySelector('.time-formate');
+          const todayShowDate = document.querySelector('.date-formate');
+          
+          const currshowDate = new Date();
+          const showCurrentDateOption = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            weekday: 'long',
+          };
+          const currentDateFormate = new Intl.DateTimeFormat(
+            'en-US',
+            showCurrentDateOption
+          ).format(currshowDate);
+          todayShowDate.textContent = currentDateFormate;
+          setInterval(() => {
+            const timer = new Date();
+            const option = {
+              hour: 'numeric',
+              minute: 'numeric',
+              second: 'numeric',
+            };
+            const formateTimer = new Intl.DateTimeFormat('en-us', option).format(timer);
+            let time = `${`${timer.getHours()}`.padStart(
+                2,
+                '0'
+              )}:${`${timer.getMinutes()}`.padStart(
+                2,
+                '0'
+              )}: ${`${timer.getSeconds()}`.padStart(2, '0')}`;
+            todayShowTime.textContent = formateTimer;
+          }, 1000);
+      </script>
+
+
+
+
 </div>
 <div class="right">
     <div class="last-cycle-div">
         <h3>Last Cycle</h3>
+        <p> Your previous period started on: </p>
         <p>{{user_cycle_data.last_cycle_date}}</p>
     </div>
     <div class="current-cycle-div">
         <h3>Current Cycle</h3>
-    {{user_cycle_data.predicted_next_cycle_start}}
+        <p> Your next period will likely start on: </p>
+        <p>{{user_cycle_data.predicted_next_cycle_start}}</p>
     </div>
-
-    <div class="exercise-div"><h3>Exercise</h3></div>
+    <div class="exercise-div">
+        <h3>Exercise</h3>
+        <p> You are currently in the ___ phase!</p>
+        <p> For exercise, we recommend: </p>
+    </div>
 </div>
-<h3>Please enter the following information to predict your flow.</h3>
- <form method="post" class="bg-light p-4 rounded shadow">
+
+
+
+
+
+
+ <!-- <h3>Please enter the following information to predict your flow.</h3>  -->
+<form method="post" class="bg-light p-4 rounded shadow">
     {% csrf_token %}
     
     <div class="form-group">
@@ -192,10 +727,10 @@ label {
             {% endfor %}
         </select>
     </div>
-    
+
     <div class="form-group">
-        <label for="{{ form.height.id_for_label }}">{{ form.height.label }}</label>
-        <input type="number" name="{{ form.height.name }}" id="{{ form.height.id_for_label }}" class="form-control" value="{{ form.height.value|default_if_none:'' }}">
+      <label for="{{ form.height.id_for_label }}">{{ form.height.label }}</label>
+      <input type="number" name="{{ form.height.name }}" id="{{ form.height.id_for_label }}" class="form-control" value="{{ form.height.value|default_if_none:'' }}">
     </div>
     
     <div class="form-group">
@@ -219,6 +754,7 @@ label {
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
-</form> 
+</form>
+
+
 {% endblock content %}
- 
