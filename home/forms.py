@@ -5,12 +5,12 @@ from .models import UserCycleData
 class UserCycleDataForm(forms.ModelForm):
     class Meta:
         model = UserCycleData
-        fields = ['cramp_level', 'cycle_start_date', 'cycle_end_date', 'height', 'weight', 'age']
+        fields = ['cramp_level', 'height', 'weight', 'age']
         
         widgets = {
             'cramp_level': forms.Select(attrs={'class': 'form-select'}),
-            'cycle_start_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'cycle_end_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            # 'cycle_start_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            # 'cycle_end_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'height': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter height in cm'}),
             'weight': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter weight in pounds'}),
             'age': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter your age'}),
