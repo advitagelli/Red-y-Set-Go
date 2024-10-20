@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block title %}
-    Home
+    Red-y Set Go
 {% endblock title %}
 
 {% block style %}
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
 
 body {
     display: flex;
@@ -17,22 +22,39 @@ body {
     background-color: #f8f8f8; /* Light gray background */ 
     color: #333; /* Dark text color */
     justify-content: left;
+    background-color: #f0f0f0;
 } 
+
 .navbar {
-    background-color: #d7c9b9;
+    background-color: #c1d5f0;
     color: white;
     padding: 10px;
     text-align: center;
 }
 
+.navbar-brand {
+    padding-left: 20px;
+}
+
+.nav-item {
+    padding-left: 1150px;
+}
+
+.container {
+    padding-top: 20px;
+    padding-left: 200px;
+}
+
+
 .up_cont {
   display: grid;
-  grid-template-columns: 75% 24.5%;
+  grid-template-columns: 50% 30%;
   width: 95%;
   height: 90%;
-  background-color: #5A5A5A;
+  background-color: #f0f0f0;
   padding: 7px;
   margin: auto;
+  padding-left: 10px;
 }
 
 .left {
@@ -42,9 +64,13 @@ body {
 }
 
 .right {
-    flex: 1; /* 25% of the width */
+    height: 70%;
+    flex: 1; /* 30% of the width */
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 21%;
 }
 
 .last-cycle-div,
@@ -57,6 +83,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
     
 
     {% comment %} flex: 1; /* Each section takes equal height */ {% endcomment %}
@@ -69,17 +96,17 @@ body {
 }
 
 .last-cycle-div {
-    background-color: #e0d4c4; 
+    background-color: rgba(224, 212, 196, 1);
     color: #4e3d3d; 
 }
 
 .current-cycle-div {
-    background-color: #f1d2d5;
+    background-color: rgba(241, 210, 213, 1);
     color: #4e3d3d;
 }
 
 .exercise-div {
-    background-color: #cbf5dd; 
+    background-color: rgba(221, 242, 209, 1); 
     color: #4e3d3d; 
 }
 
@@ -100,6 +127,11 @@ h1, h2 {
 
 h2 {
     color: #d85c8c; /* Light pink for headings */
+}
+
+h3 {
+    color: white;
+    font-align: 0 auto;
 }
 
 form {
@@ -440,13 +472,12 @@ label {
       opacity: 1;
     }
   }
-
-
 {% endblock style %}
 
 
-{% block content %}
 
+
+{% block content %}
 <div class="left">
     <h1 welcome-message> Welcome, {{user}}</h1>
     <div class="container">
@@ -455,11 +486,11 @@ label {
             <span class="month-picker" id="month-picker"> May </span>
             <div class="year-picker" id="year-picker">
               <span class="year-change" id="pre-year">
-                <pre><</pre>
+                <pre style="color: white; margin-top: 14px;"><</pre>
               </span>
-              <span id="year">2020 </span>
+              <span id="year">2020</span>
               <span class="year-change" id="next-year">
-                <pre>></pre>
+                <pre style="color: white; margin-top: 14px;">></pre>
               </span>
             </div>
           </div>
@@ -489,6 +520,18 @@ label {
           <div class="month-list"></div>
         </div>
       </div>
+
+      <script type="text/javascript" src="papaparse.min.js">
+        let file = document.getElementById("file-input").files[0]
+        Papa.parse(file, {
+            complete: function(result) {
+                console.log(result.data)
+        }
+        })
+      </script>
+
+
+
       <script>
         const isLeapYear = (year) => {
             return (
@@ -646,12 +689,33 @@ label {
             todayShowTime.textContent = formateTimer;
           }, 1000);
       </script>
+
+
+
+
 </div>
 <div class="right">
-    <div class="last-cycle-div"><h3>Last Cycle</h3></div>
-    <div class="current-cycle-div"><h3>Current Cycle</h3></div>
-    <div class="exercise-div"><h3>Exercise</h3></div>
+    <div class="last-cycle-div">
+        <h3>Last Cycle</h3>
+        <p> Your previous period started on: ___</p>
+    </div>
+    <div class="current-cycle-div">
+        <h3>Current Cycle</h3>
+        <p> Your next period will likely start on: ___</p>
+    </div>
+    <div class="exercise-div">
+        <i class="fa-solid fa-person-running"></i>
+        <h3>Exercise</h3>
+        <p> You are currently in the ___ phase!</p>
+        <p> For exercise, we recommend: </p>
+    </div>
 </div>
+
+
+
+
+
+
 {% comment %} <h3>Please enter the following information to predict your flow.</h3> {% endcomment %}
 {% comment %} <form method="post" class="bg-light p-4 rounded shadow">
     {% csrf_token %}
